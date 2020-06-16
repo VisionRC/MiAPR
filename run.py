@@ -103,47 +103,8 @@ class Agent(object):
         table = np.argwhere(_map == 0)
         random_num = random.choice(table)
         (x, y) = random_num
-        # print(random_num)
-        # f = open("d1.txt", "w")
-        #
-        # for y in range(210):
-        #     f.write(str(map_new[y]))
-        #     f.write("\r")
-        #
-        # f.close()
-
-        # while self.map[y][x] == 1:
-        #     x = random.randrange(60, 100, 1)
-        #     y = random.randrange(80, 130, 1)
 
         self.target = (x, y)
-
-        # if self.spaceShip_pos == (80, 106):
-        #     # Brak statku
-        #     x = random.randrange(60, 100, 1)
-        #     y = random.randrange(80, 130, 1)
-        #     self.target = (x, y)
-        # else:
-        #     (a, b) = self.spaceShip_pos
-        #     if 0 <= a - 25 <= 159 and a + 25 <= 159 and \
-        #             0 <= b - 25 <= 209 and b + 25 <= 209:
-        #         square = np.array(self.map)
-        #         square = square[a - 25:a + 25, b - 25:b + 25]
-        #
-        #         (x1, y1) = ndimage.measurements.center_of_mass(square, labels=None, index=0)
-        #         x1 = x1.astype(int)
-        #         y1 = y1.astype(int)
-        #         if square[y1, x1] == 0:
-        #             x = x1
-        #             y = y1
-        #             print(x, y)
-        #             self.target = (x, y)
-        #         else:
-        #             while self.map[y1][x1] == 1:
-        #                 x = random.randrange(60, 100, 1)
-        #                 y = random.randrange(80, 130, 1)
-        #                 print(x, y)
-        #                 self.target = (x, y)
 
     def PlanedPath_Robot(self):
 
@@ -284,7 +245,7 @@ def main():
             # agent.PlanedPath_Robot()
 
             # Take action
-            ob, reward, done, info = env.step(6)
+            ob, reward, done, info = env.step(action)
             agent.ch_target += 1
             # If no more lives left
             if done:
